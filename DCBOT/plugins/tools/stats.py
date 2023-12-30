@@ -1,13 +1,13 @@
 import platform
 from sys import version as pyver
-
+import random
 import psutil
 from pyrogram import __version__ as pyrover
 from pyrogram import filters
 from pyrogram.errors import MessageIdInvalid
 from pyrogram.types import InputMediaPhoto, Message
 from pytgcalls.__version__ import __version__ as pytgver
-
+from config import STATS_IMG_URL, START_IMG_URL 
 import config
 from DCBOT import app
 from DCBOT.core.userbot import assistants
@@ -24,7 +24,7 @@ from config import BANNED_USERS
 async def stats_global(client, message: Message, _):
     upl = stats_buttons(_, True if message.from_user.id in SUDOERS else False)
     await message.reply_photo(
-        photo=config.STATS_IMG_URL,
+        photo=random.choice(STATS_IMG_URL),
         caption=_["gstats_2"].format(app.mention),
         reply_markup=upl,
     )
@@ -63,12 +63,12 @@ async def overall_stats(client, CallbackQuery, _):
         config.AUTO_LEAVING_ASSISTANT,
         config.DURATION_LIMIT_MIN,
     )
-    med = InputMediaPhoto(media=config.STATS_IMG_URL, caption=text)
+    med = InputMediaPhoto(media=random.choice(STATS_IMG_URL), caption=text)
     try:
         await CallbackQuery.edit_message_media(media=med, reply_markup=upl)
     except MessageIdInvalid:
         await CallbackQuery.message.reply_photo(
-            photo=config.STATS_IMG_URL, caption=text, reply_markup=upl
+            photo=random.choice(STATS_IMG_URL), caption=text, reply_markup=upl
         )
 
 
@@ -126,10 +126,10 @@ async def bot_stats(client, CallbackQuery, _):
         call["collections"],
         call["objects"],
     )
-    med = InputMediaPhoto(media=config.STATS_IMG_URL, caption=text)
+    med = InputMediaPhoto(media=random.choice(STATS_IMG_URL), caption=text)
     try:
         await CallbackQuery.edit_message_media(media=med, reply_markup=upl)
     except MessageIdInvalid:
         await CallbackQuery.message.reply_photo(
-            photo=config.STATS_IMG_URL, caption=text, reply_markup=upl
+            photo=random.choice(STATS_IMG_URL), caption=text, reply_markup=upl
         )
