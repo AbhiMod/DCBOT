@@ -147,7 +147,7 @@ async def welcome(client, message: Message):
                 await message.reply_photo(
                     photo=random.choice(DCBOT),
                     caption=_["start_3"].format(
-                        message.from_user.first_name,
+                        message.from_user.mention,
                         app.mention,
                         message.chat.title,
                         app.mention,
