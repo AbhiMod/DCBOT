@@ -25,6 +25,8 @@ from DCBOT.utils.inline import help_pannel, private_panel, start_panel
 from config import BANNED_USERS
 from strings import get_string
 
+DCBOT = ["https://graph.org/file/04bc1c79ebdf6bbb15b05.jpg", "https://graph.org/file/d5da08b65b054e7183ae9.jpg", "https://graph.org/file/941558bfd46ee7f4c805b.jpg", "https://graph.org/file/4e07ecb0b1f68047fef51.jpg", "https://graph.org/file/2311d35739ca433f0b1c9.jpg", "https://graph.org/file/3ccbe5d1b2df1282afff8.jpg", "https://graph.org/file/13e35118f9db15f85d085.jpg"]
+
 
 @app.on_message(filters.command(["start"]) & filters.private & ~BANNED_USERS)
 @LanguageStart
@@ -35,7 +37,7 @@ async def start_pm(client, message: Message, _):
         if name[0:4] == "help":
             keyboard = help_pannel(_)
             return await message.reply_photo(
-                photo=random.choice(START_IMG_URL),
+                photo=random.choice(DCBOT),
                 caption=_["help_1"].format(config.SUPPORT_GROUP),
                 protect_content=True,
                 reply_markup=keyboard,
@@ -91,7 +93,7 @@ async def start_pm(client, message: Message, _):
         served_users = len(await get_served_users())
         UP, CPU, RAM, DISK = await bot_sys_stats()
         await message.reply_photo(
-            photo=random.choice(START_IMG_URL),
+            photo=random.choice(DCBOT),
             caption=_["start_2"].format(message.from_user.mention, app.mention, UP, DISK, CPU, RAM,served_users,served_chats),
             reply_markup=InlineKeyboardMarkup(out),
         )
@@ -108,7 +110,7 @@ async def start_gp(client, message: Message, _):
     out = start_panel(_)
     uptime = int(time.time() - _boot_)
     await message.reply_photo(
-        photo=config.START_IMG_URL,
+        photo=random.choice(DCBOT),
         caption=_["start_1"].format(app.mention, get_readable_time(uptime)),
         reply_markup=InlineKeyboardMarkup(out),
     )
@@ -143,7 +145,7 @@ async def welcome(client, message: Message):
 
                 out = start_panel(_)
                 await message.reply_photo(
-                    photo=config.START_IMG_URL,
+                    photo=random.choice(DCBOT),
                     caption=_["start_3"].format(
                         message.from_user.first_name,
                         app.mention,
