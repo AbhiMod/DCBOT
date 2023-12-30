@@ -5,10 +5,9 @@ from pyrogram.types import (
     CallbackQuery,
     InlineKeyboardButton,
     InlineKeyboardMarkup,
-    InputMediaPhoto,
-    InputMediaVideo,
     Message,
 )
+
 from DCBOT import app
 from DCBOT.utils.database import (
     add_nonadmin_chat,
@@ -35,7 +34,8 @@ from DCBOT.utils.inline.settings import (
     vote_mode_markup,
 )
 from DCBOT.utils.inline.start import private_panel
-from config import BANNED_USERS, OWNER_ID, MUSIC_BOT_NAME
+from config import BANNED_USERS, OWNER_ID
+
 
 @app.on_message(
     filters.command(["settings", "setting"]) & filters.group & ~BANNED_USERS
@@ -64,16 +64,6 @@ async def settings_cb(client, CallbackQuery, _):
             CallbackQuery.message.chat.title,
         ),
         reply_markup=InlineKeyboardMarkup(buttons),
-    )
-    
-@app.on_callback_query(filters.regex("gib_source") & ~BANNED_USERS)
-@languageCB
-async def gib_repo(client, CallbackQuery, _):
-    await CallbackQuery.edit_message_media(
-        InputMediaVideo("https://graph.org/file/bbc4bd34afe687b08ad61.mp4"),
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data=f"settingsback_helper")]]
-        ),
     )
     
 @app.on_callback_query(filters.regex("settingsback_helper") & ~BANNED_USERS)
