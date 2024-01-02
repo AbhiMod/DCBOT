@@ -43,11 +43,7 @@ async def on_left_chat_member(_, message: Message):
         title = message.chat.title
         username = f"@{message.chat.username}" if message.chat.username else "𝐏ʀɪᴠᴀᴛᴇ 𝐂ʜᴀᴛ"
         chat_id = message.chat.id
-        left = f"✫ 𝐋ᴇғᴛ_𝐆ʀᴏᴜᴘ ✫\n"
-               f"✫ 𝐂ʜᴀᴛ 𝐓ɪᴛʟᴇ : {title}\n"
-               f"✫ 𝐂ʜᴀᴛ 𝐈ᴅ : {chat_id}\n"
-               f"✫ 𝐑ᴇᴍᴏᴠᴇᴅ 𝐁ʏ : {remove_by}\n"
-               f"✫ 𝐁ᴏᴛ : @{app.username}"
+        left = f"✫ #𝐋ᴇғᴛ_𝐆ʀᴏᴜᴘ ✫\n✫ 𝐂ʜᴀᴛ 𝐓ɪᴛʟᴇ : {title}\n✫ 𝐂ʜᴀᴛ 𝐈ᴅ : {chat_id}\n✫ 𝐑ᴇᴍᴏᴠᴇᴅ 𝐁ʏ : {remove_by}\n✫ 𝐁ᴏᴛ : @{app.username}"
         await app.send_message(LOGS, left)
         except Exception as e:
             print(f"Error send To @Sanam_King : {e}")
