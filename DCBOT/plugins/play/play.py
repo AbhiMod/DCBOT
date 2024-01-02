@@ -1,6 +1,6 @@
 import random
 import string
-
+import random
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InputMediaPhoto, Message
 from pytgcalls.exceptions import NoActiveGroupCall
@@ -24,7 +24,20 @@ from DCBOT.utils.logger import play_logs
 from DCBOT.utils.stream.stream import stream
 from config import BANNED_USERS, lyrical
 
-
+AM = ["🔥",
+        "⚡️",
+        "✨",
+        "☔️",
+        "💫",
+        "✨",
+        "🎲",
+        "🧨",
+        "💣",
+        "🧪",
+        "🔎",
+        "🔍",
+        "💕",
+],
 @app.on_message(
    filters.command(["play", "vplay", "cplay", "cvplay", "playforce", "vplayforce", "cplayforce", "cvplayforce"] ,prefixes=["/", "!", "%", ",", "", ".", "@", "#"])
             
@@ -44,7 +57,7 @@ async def play_commnd(
     fplay,
 ):
     mystic = await message.reply_text(
-        _["play_2"].format(channel) if channel else _["play_1"]
+        _["play_2"].format(channel) if channel else random.choice(AM)
     )
     plist_id = None
     slider = None
@@ -444,7 +457,7 @@ async def play_music(client, CallbackQuery, _):
     except:
         pass
     mystic = await CallbackQuery.message.reply_text(
-        _["play_2"].format(channel) if channel else _["play_1"]
+        _["play_2"].format(channel) if channel else random.choice(AM)
     )
     try:
         details, track_id = await YouTube.track(vidid, True)
@@ -531,7 +544,7 @@ async def play_playlists_command(client, CallbackQuery, _):
     except:
         pass
     mystic = await CallbackQuery.message.reply_text(
-        _["play_2"].format(channel) if channel else _["play_1"]
+        _["play_2"].format(channel) if channel else random.choice(AM)
     )
     videoid = lyrical.get(videoid)
     video = True if mode == "v" else None
