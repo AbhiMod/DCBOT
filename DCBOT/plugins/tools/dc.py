@@ -25,13 +25,3 @@ async def on_new_chat_members(client: Client, message: Message):
         lemda_text = f"🌹 ʙᴏᴛ ᴀᴅᴅᴇᴅ ᴛᴏ ɴᴇᴡ ɢʀᴏᴜᴘ ..\n\n┏━━━━━━━━━━━━━━━━━┓\n┣★ **ᴄʜᴀᴛ** › : {matlabi_jhanto}\n┣★ **ᴄʜᴀᴛ ɪᴅ** › : {chat_id}\n┣★ **ᴄʜᴀᴛ ᴜɴᴀᴍᴇ** › : {chatusername}\n┣★ **ᴛᴏᴛᴀʟ ᴄʜᴀᴛ** › : {served_chats}\n┣★ **ᴀᴅᴅᴇᴅ ʙʏ** › :\n┗━━━ {added_by}"
         await lul_message(LOGS, lemda_text)
         
-@app.on_message(filters.left_chat_member)
-async def on_left_chat_member(_, message: Message):
-    if (await app.get_me()).id == message.left_chat_member.id:
-        remove_by = message.from_user.mention if message.from_user else "𝐔ɴᴋɴᴏᴡɴ 𝐔sᴇʀ"
-        title = message.chat.title
-        username = f"@{message.chat.username}" if message.chat.username else "𝐏ʀɪᴠᴀᴛᴇ 𝐂ʜᴀᴛ"
-        chat_id = message.chat.id
-        lemda_text = f"ʙᴏᴛ ʟᴇꜰᴛ ᴛᴏ ɢʀᴏᴜᴘ ..\n\n┏━━━━━━━━━━━━━━━━━┓\n┣★ **ᴄʜᴀᴛ** › : {title}\n┣★ **ᴄʜᴀᴛ ɪᴅ** › : {chat_id}\n┣★ **ʙᴏᴛ ᴜɴᴀᴍᴇ** › : {username}\n┣★ **ʀᴇᴍᴏᴠᴇᴅ ʙʏ** › :\n┗━━━ {remove_by}"
-        await app.send_message(LOGS, lemda_text)
-
