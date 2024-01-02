@@ -45,5 +45,3 @@ async def on_left_chat_member(_, message: Message):
         chat_id = message.chat.id
         left = f"✫ #𝐋ᴇғᴛ_𝐆ʀᴏᴜᴘ ✫\n✫ 𝐂ʜᴀᴛ 𝐓ɪᴛʟᴇ : {title}\n✫ 𝐂ʜᴀᴛ 𝐈ᴅ : {chat_id}\n✫ 𝐑ᴇᴍᴏᴠᴇᴅ 𝐁ʏ : {remove_by}\n✫ 𝐁ᴏᴛ : @{app.username}"
         await app.send_message(LOGS, left)
-        except Exception as e:
-            print(f"Error send To @Sanam_King : {e}")
