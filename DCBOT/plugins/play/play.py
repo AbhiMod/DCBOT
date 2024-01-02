@@ -24,20 +24,14 @@ from DCBOT.utils.logger import play_logs
 from DCBOT.utils.stream.stream import stream
 from config import BANNED_USERS, lyrical
 
-AM = ["🔥",
-        "⚡️",
-        "✨",
-        "☔️",
-        "💫",
-        "✨",
-        "🎲",
-        "🧨",
-        "💣",
-        "🧪",
-        "🔎",
-        "🔍",
-        "💕",
-],
+AM = [
+    "💞",
+    "🔎",
+    "🔍",
+    "🧪",
+    "💣",
+    "🧨"
+]
 @app.on_message(
    filters.command(["play", "vplay", "cplay", "cvplay", "playforce", "vplayforce", "cplayforce", "cvplayforce"] ,prefixes=["/", "!", "%", ",", "", ".", "@", "#"])
             
