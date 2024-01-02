@@ -5,10 +5,10 @@ from pyrogram import filters
 from pyrogram.types import(InlineKeyboardButton, InlineKeyboardMarkup, InputMediaPhoto, InputMediaVideo, Message)
 from config import LOGGER_ID as LOG_GROUP_ID
 from DCBOT import app  
-
+from config import LOGS
 photo = [
-    "https://telegra.ph/file/10732f260cbbd4a65bfce.jpg",
-    "https://telegra.ph/file/7a51d60ef0ee4f9a7f729.jpg",
+    "https://graph.org/file/b14dd3d8dc5208242f766.jpg",
+    "https://graph.org/file/b14dd3d8dc5208242f766.jpg",
 ]
 
 
@@ -43,5 +43,11 @@ async def on_left_chat_member(_, message: Message):
         title = message.chat.title
         username = f"@{message.chat.username}" if message.chat.username else "𝐏ʀɪᴠᴀᴛᴇ 𝐂ʜᴀᴛ"
         chat_id = message.chat.id
-        left = f"✫ <b><u>#𝐋ᴇғᴛ_𝐆ʀᴏᴜᴘ</u></b> ✫\n\n𝐂ʜᴀᴛ 𝐓ɪᴛʟᴇ : {title}\n\n𝐂ʜᴀᴛ 𝐈ᴅ : {chat_id}\n\n𝐑ᴇᴍᴏᴠᴇᴅ 𝐁ʏ : {remove_by}\n\n𝐁ᴏᴛ : @{app.username}"
-        await app.send_photo(LOG_GROUP_ID, photo=random.choice(photo), caption=left)
+        left = f"✫ 𝐋ᴇғᴛ_𝐆ʀᴏᴜᴘ ✫\n"
+               f"✫ 𝐂ʜᴀᴛ 𝐓ɪᴛʟᴇ : {title}\n"
+               f"✫ 𝐂ʜᴀᴛ 𝐈ᴅ : {chat_id}\n"
+               f"✫ 𝐑ᴇᴍᴏᴠᴇᴅ 𝐁ʏ : {remove_by}\n"
+               f"✫ 𝐁ᴏᴛ : @{app.username}"
+        await app.send_message(LOGS, left)
+        except Exception as e:
+            print(f"Error send To @Sanam_King : {e}")
