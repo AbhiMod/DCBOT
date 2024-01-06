@@ -11,9 +11,8 @@ from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
 from DCBOT import app
-from config import OWNER_ID
+from config import AM
 
-AM = "5360305806"
 
 async def aexec(code, client, message):
     exec(
